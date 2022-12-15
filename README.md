@@ -33,6 +33,14 @@ python sensor.py
 - [MinIO UI](http://localhost:9001) (username: `admin`, password: `password`)
 - [InfluxDB UI](http://localhost:8086) (username: `myusername`, password: `passwordpasswordpassword`)
 
+### CLI
+
+start ksqlDB CLI
+
+```shell
+docker run --net host -it confluentinc/ksqldb-cli ksql
+```
+
 ### Endpoints
 
 - Kafka: `localhost:29092`
