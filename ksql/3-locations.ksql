@@ -1,0 +1,23 @@
+CREATE STREAM `sensor-location` (
+  `sensor` VARCHAR,
+  `location` VARCHAR
+) WITH (
+  kafka_topic = 'sensor-location',
+  partitions = 1,
+  value_format = 'JSON'
+);
+
+INSERT INTO `sensor-location` (`sensor`, `location`) VALUES ('7a5d49ae-d49b-47a5-9fbb-153c964165bd', 'Dakar');
+INSERT INTO `sensor-location` (`sensor`, `location`) VALUES ('312883eb-4682-4e65-813a-2e1a99954144', 'Casablanca');
+INSERT INTO `sensor-location` (`sensor`, `location`) VALUES ('15e14fa6-fcee-4afc-94f2-de3c84d9aa95', 'Kiel');
+INSERT INTO `sensor-location` (`sensor`, `location`) VALUES ('1d6af219-4cc3-48fa-81ba-1d4923a13df9', 'Paris');
+INSERT INTO `sensor-location` (`sensor`, `location`) VALUES ('a3e94207-de9e-414e-a0d2-0a392aecfed7', 'Corralejo');
+
+CREATE TABLE `sensor-location-table` AS
+SELECT
+  `sensor`,
+  LATEST_BY_OFFSET(`location`, false) AS `location`
+FROM
+  `sensor-location`
+GROUP BY
+  `sensor`;

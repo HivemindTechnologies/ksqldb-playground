@@ -1,0 +1,19 @@
+CREATE STREAM `sensor-data-berlin` WITH (
+  kafka_topic = 'sensor-data-berlin',
+  value_format = 'JSON_SR'
+) AS
+SELECT
+  s.`sensor`,
+  s.`temperature` AS `temperature`,
+  s.`humidity` AS `humidity`,
+  s.`pressure` AS `pressure`,
+  l.`location` AS `location`,
+  AS_VALUE(s.`sensor`) AS `sensor`
+FROM
+  `sensor-data` s
+  JOIN `sensor-location-table` l ON s.`sensor` = l.`sensor`
+WHERE l.`location` = 'Berlin'
+EMIT CHANGES;
+
+INSERT INTO `sensor-location` (`sensor`, `location`) VALUES ('15e14fa6-fcee-4afc-94f2-de3c84d9aa95', 'Berlin');
+INSERT INTO `sensor-location` (`sensor`, `location`) VALUES ('1d6af219-4cc3-48fa-81ba-1d4923a13df9', 'Berlin');

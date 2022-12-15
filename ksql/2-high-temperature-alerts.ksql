@@ -1,0 +1,10 @@
+CREATE STREAM `high-temperature-alerts` WITH (
+  kafka_topic = 'high-temperature-alerts',
+  value_format = 'JSON_SR'
+) AS
+SELECT
+  `temperature`,
+  `sensor`
+FROM `sensor-data`
+WHERE `temperature` > 28.0
+EMIT CHANGES;

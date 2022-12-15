@@ -1,0 +1,8 @@
+###
+POST http://localhost:8088/query HTTP/1.1
+Accept: application/vnd.ksql.v1+json
+Content-Type: application/vnd.ksql.v1+json
+
+{
+  "ksql": "SELECT * FROM `sensor-location-table`;"
+}

@@ -1,0 +1,7 @@
+SELECT
+  `sensor`,
+  AVG(`temperature`) AS `temperature_avg`
+FROM
+  `sensor-data` WINDOW TUMBLING (SIZE 1 MINUTE)
+GROUP BY `sensor`
+EMIT CHANGES;

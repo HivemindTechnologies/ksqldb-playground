@@ -1,0 +1,9 @@
+CREATE STREAM `sensor-data` (
+  `temperature` DOUBLE,
+  `humidity` DOUBLE,
+  `pressure` DOUBLE,
+  `sensor` VARCHAR
+) WITH (
+  kafka_topic = 'sensor-data',
+  value_format = 'JSON'
+);
