@@ -1,5 +1,7 @@
 # ksqlDB Playground
 
+This git repository contains all the necessary resources for getting started with ksqlDB. You can explore it by yourself or read our [blog article on ksqlDB](https://hivemindtechnologies.com/en/blog/introduction-to-ksqlbd), which provides a comprehensive overview of the technology and its capabilities, including step-by-step guides for setting up and using ksqlDB in various scenarios. In addition, the repository includes sample data and code examples to help you start with ksqlDB. 
+
 ![Architecture](./architecture.png)
 
 ## Setup
